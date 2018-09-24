@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<style>
+    ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background-color: #333333;
+    }
+
+    li {
+        float: left;
+    }
+
+    li a {
+        display: block;
+        color: white;
+        text-align: center;
+        padding: 16px;
+        text-decoration: none;
+    }
+
+    li a:hover {
+        background-color: #111111;
+    }
+</style>
+<head>
+    <meta charset="UTF-8">
+    <title>Create</title>
+</head>
+<body>
+<ul>
+    <li><a href="/index">IMDB</a></li>
+    <li><a href="/Movies">Movies</a></li>
+
+</ul>
+
+<h2>Add new movie</h2>
+
+<form action="/Movies.php">
+    Title:<br>
+    <input type="text" name="Title" value="">
+    <br>
+    Year:<br>
+    <input type="text" name="Year" value="">
+    <br><br>
+    Duration:<br>
+    <input type="text" name="Duration" value="">
+    <br><br>
+    Genre:<br>
+    <input type="text" name="Genre" value="">
+    <br><br>
+    <input type="submit" value="Submit">
+</form>
+
+<p>If you click the "Submit" button, the form-data will be sent to a page called "/MyMovies".</p>
+
+</body>
+</html>
