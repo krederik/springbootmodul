@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
 <style>
     ul {
         list-style-type: none;
@@ -25,14 +26,69 @@
         background-color: #111111;
     }
 </style>
-<head>
+
     <meta charset="UTF-8">
     <title>Movies</title>
 </head>
 <body>
 <ul>
+
     <li><a href="/index">IMDB</a></li>
     <li><a href="/Movies">Movies</a></li>
+    </div>
+
+    <div style="padding-left: 38px;padding-right: 4px;";>
+        <h2>Movie List</h2>
+        <a href="/Create"><button  class="button"><span>Create </span></button></a>
+        <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for Title.." title="Type in a name">
+
+
+        <div class="container">
+
+            <table id="myTable">
+                <thead>
+                <tr class="header">
+                    <th style="width:25%;">MovieName</th>
+                    <th style="width:25%;">ProduceYear</th>
+                    <th style="width:25%;">Genre</th>
+                    <th style="width:25%;">Duration (min)</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="movie:${Movies}">
+                    <td th:text="${movie.MovieName}"/>
+                    <td th:text="${movie.ProduceYear}"/>
+                    <td th:text="${movie.Genre}"/>
+                    <td th:text="${movie.Duration}"/>
+                    <td>
+                    </td>
+                </tr>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    </div>
+    </table>
+    <script>
+        function myFunction() {
+            var input, filter, table, tr, td, i;
+            input = document.getElementById("myInput");
+            filter = input.value.toUpperCase();
+            table = document.getElementById("myTable");
+            tr = table.getElementsByTagName("tr");
+            for (i = 0; i < tr.length; i++) {
+                td = tr[i].getElementsByTagName("td")[0];
+                if (td) {
+                    if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+                        tr[i].style.display = "";
+                    } else {
+                        tr[i].style.display = "none";
+                    }
+                }
+            }
+        }
 
 </ul>
 </body>

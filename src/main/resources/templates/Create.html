@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <style>
     ul {
         list-style-type: none;
@@ -30,31 +30,22 @@
     <title>Create</title>
 </head>
 <body>
-<ul>
-    <li><a href="/index">IMDB</a></li>
-    <li><a href="/Movies">Movies</a></li>
+<div class="container">
+    <h1>Create student</h1>
+    <form method="Post" th:action="@{/Create}">
 
-</ul>
+        <p>MovieName</p>
+        <input type="text" th:field="${movie.MovieName}"/>
+        <p>Enter PrdouctionYear</p>
+        <input type="text" th:field="${movie.ProduceYear}"/>
+        <p>Enter Genre</p>
+        <input type="text" th:field="${movie.Genre}"/>
+        <p>Enter Duration</p>
+        <input type="text" th:field="${movie.Duration}"/>
 
-<h2>Add new movie</h2>
-
-<form action="/Movies.php">
-    Title:<br>
-    <input type="text" name="Title" value="">
-    <br>
-    Year:<br>
-    <input type="text" name="Year" value="">
-    <br><br>
-    Duration:<br>
-    <input type="text" name="Duration" value="">
-    <br><br>
-    Genre:<br>
-    <input type="text" name="Genre" value="">
-    <br><br>
-    <input type="submit" value="Submit">
-</form>
-
-<p>If you click the "Submit" button, the form-data will be sent to a page called "/MyMovies".</p>
-
+        <input class="btn btn-primary" type="submit" value="Send"/>
+    </form>
+</div>
+<script th:src="@{/webjars/jquery/3.1.1/jquery.min.js}"></script>
 </body>
 </html>

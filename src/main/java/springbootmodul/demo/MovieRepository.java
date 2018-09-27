@@ -11,11 +11,11 @@ public class MovieRepository {
 
 
    Movie movie1 = new Movie("Harry Potter" ,1998, "Horror",250);
-   Movie movie2 = new Movie("Harry Potter2" ,1998, "Horror",250);
-   Movie movie3 = new Movie("Harry Potter3" ,1998, "Horror",250);
-   Movie movie4 = new Movie("Harry Potter4" , 1998, "Horror",250);
-   Movie movie5 = new Movie("Harry Potter5" , 1998, "Horror",250);
-   Movie movie6 = new Movie("Harry Potter6" , 1998, "Horror",250);
+   Movie movie2 = new Movie("Harry Potter2" ,2000, "Thriller",250);
+   Movie movie3 = new Movie("The Mask" ,2002, "Romantic",200);
+   Movie movie4 = new Movie("Fast8" , 1998, "Action",300);
+   Movie movie5 = new Movie("King Kong" , 2005, "Horror",200);
+   Movie movie6 = new Movie("Spiderman" , 2012, "Action",250);
 
 
 

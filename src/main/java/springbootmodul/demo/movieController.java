@@ -5,52 +5,57 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-
+import java.util.List;
 import java.util.logging.Logger;
 
 @Controller
 public class movieController {
+    private static String Create = "Create";
+    private static String Search = "Search";
+    private static String Movies = "Movies";
 
     Logger log = Logger.getLogger(MovieRepository.class.getName());
-        private String CREATE = "Create";
-        private String SEARCH = "Search";
-        private String MOVIES = "Movies";
-        MovieRepository movieList = new MovieRepository()
-        //@Autowired
-        //MovieRepository movieRepository;
 
-    @GetMapping("/Movies")
+
+    @Autowired
+    MovieRepository movieRepository;
+
+    @GetMapping
     public String Movies(Model model){
+
         log.info("Movies called...");
-        model.addAttribute("movies", movieList.getMovies());
+        List<Movie> movies = movieRepository.getMovies();
+        model.addAttribute("movies", movies);
         //den nøgle vi bruger
-        return MOVIES;
+
+        return "index";
     }
 
-    //List<Movie> movies = movieRepository.getMovies();
+    @GetMapping("/Create")
+    public String create(Model model){
+        log.info("Create action called...");
 
-        @GetMapping("/Create")
-        public String Create(Model model){
+        model.addAttribute("movie", new Movie());
+        return "Create";
+    }
 
-            log.info("Create action called...");
-            model.addAttribute("movie", new Movie());
-            return "CREATE";
-        }
+    @PostMapping ("/Create")
+    public String create(@ModelAttribute Movie movie, Model model){
+        log.info("create post action called...");
+        //movieRepository.save(movie);
+        model.addAttribute("movies", movieRepository.getMovies());
+        return "redirect:/";
+    }
+    @GetMapping("/Search")
+    public String Search(){
 
-    //@RequestMapping(value = "/", method = RequestMethod.GET)
-    //public String index(Model model) {
+        return "Search";
+    }
+    @GetMapping("/Movies")
+    public String Movies(){
 
-
-        @RequestMapping(value = "/Create")
-        public String addmovieToList(
-            @RequestParam("movieName") String movieName
-            @RequestParam("ProduceYear") int produceyear;
-            @RequestParam("Genre") String genre;
-            @RequestParam("Duration") int duration;
-
-            movieList.movies.add(new Movie(movieName, produceyear, genre, duration ));
-            return "redirect:/Movie";
-
-
+        return "Movies";
+    }
 
 }
+
